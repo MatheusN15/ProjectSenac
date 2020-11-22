@@ -189,12 +189,16 @@ public class MenuVeiculo {
 				case OPCAO_MENU_CONSULTAR_TODOS_VEICULOS:{
 					opcao = OPCAO_MENU_CONSULTAR_VEICULOS_VOLTAR;
 					ArrayList<VeiculoVO> listaVeiculosVO = controladoraVeiculo.consultarTodosVeiculosController();
+					if(listaVeiculosVO.isEmpty()) {
+						System.out.println("\nLista de Veiculos não localizada.");
+					}
 					System.out.println("\n------ RESULTADO DA CONSULTA ------");
 					System.out.printf("\n%3s   %-10s   %-10s   %-10s   %-5s   %-10s   %-10s \n",
 							"ID", "MODELO", "TIPO", "FABRICANTE", "ANO", "COR", "PLACA");
 					for (int i = 0; i < listaVeiculosVO.size(); i++) {
 						listaVeiculosVO.get(i).imprimir();
 					}
+					break;
 				}
 				case OPCAO_MENU_CONSULTAR_UM_VEICULO:{
 					opcao = OPCAO_MENU_CONSULTAR_VEICULOS_VOLTAR;
@@ -203,12 +207,18 @@ public class MenuVeiculo {
 					veiculoVO.setIdVeiculo(Integer.parseInt(teclado.nextLine()));
 					
 					VeiculoVO veiculo = controladoraVeiculo.consultarVeiculoController(veiculoVO); 
+					if (veiculo == null) {
+						System.out.println("\nVeiculo não localizado.");
+					}
 					System.out.println("\n------ RESULTADO DA CONSULTA ------");
 					System.out.println("");
 					veiculo.imprimir();
-					}
+					break;
 				}
 			}
+			consultarVeiculo();
+			}
+		apresentarOpcoesMenuVeiculo();
 		}
 		
 
