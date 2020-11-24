@@ -28,9 +28,9 @@ public class ControladoraVeiculo {
 		return veiculoBO.cunsultarTodosVeiculosBO();
 	}
 	
-	public VeiculoVO consultarVeiculoController(VeiculoVO veiculoVO) {
+	public VeiculoVO consultarVeiculoController(int idVeiculo) {
 		VeiculoBO veiculoBO = new VeiculoBO();
-		return veiculoBO.cunsultarVeiculoBO(veiculoVO);	
+		return veiculoBO.cunsultarVeiculoBO(idVeiculo);	
 	}
 
 }

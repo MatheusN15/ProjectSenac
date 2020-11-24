@@ -29,7 +29,16 @@ public class MenuVeiculo {
 	
 	
 	public void apresentarMenuVeiculo() {
-		int opcao = this.apresentarOpcoesMenuVeiculo();
+		System.out.println("Revenda Ferro Velho");
+		System.out.println("====Menu VEICULO====");
+		System.out.println("\nOpções:");
+		System.out.println(OPCAO_VEICULO_CADASTRAR + "- Cadastrar VEICULO:");
+		System.out.println(OPCAO_VEICULO_CONSULTAR + "- Consultar VEICULO:");
+		System.out.println(OPCAO_VEICULO_ATUALIZAR + "- Atualizar VEICULO:");
+		System.out.println(OPCAO_VEICULO_EXCLUIR + "- Excliur VEICULO:");
+		System.out.println(OPCAO_VEICULO_VOLTAR + "- Retornar ao Menu:");
+		System.out.print("\nDigite a opção: ");
+		int opcao = Integer.parseInt(teclado.nextLine());
 		
 		while (opcao != OPCAO_VEICULO_VOLTAR) {
 			switch (opcao) {
@@ -50,14 +59,13 @@ public class MenuVeiculo {
 				System.out.println("Opcão invalida");
 				break;
 			}
-		opcao = this.apresentarOpcoesMenuVeiculo();	
 		}
 		
 	}
 
 
 
-	private int apresentarOpcoesMenuVeiculo() {
+/*	private int apresentarOpcoesMenuVeiculo() {
 		System.out.println("Revenda Ferro Velho");
 		System.out.println("====Menu VEICULO====");
 		System.out.println("\nOpções:");
@@ -69,7 +77,7 @@ public class MenuVeiculo {
 		System.out.print("\nDigite a opção: ");
 		return Integer.parseInt(teclado.nextLine());
 		
-	}
+	}*/
 	
 	private void cadastrarVeiculo() {
 		VeiculoVO veiculoVO = new VeiculoVO();
@@ -112,7 +120,7 @@ public class MenuVeiculo {
 		ControladoraVeiculo controladoraVeiculo = new ControladoraVeiculo();
 		String resultado = controladoraVeiculo.cadastrarVeiculoController(veiculoVO);
 		System.out.println(resultado);
-		
+		apresentarMenuVeiculo();
 	}
 
 
@@ -202,11 +210,10 @@ public class MenuVeiculo {
 				}
 				case OPCAO_MENU_CONSULTAR_UM_VEICULO:{
 					opcao = OPCAO_MENU_CONSULTAR_VEICULOS_VOLTAR;
-					VeiculoVO veiculoVO = new VeiculoVO();
 					System.out.println("Digite o codigo do pedido: ");
-					veiculoVO.setIdVeiculo(Integer.parseInt(teclado.nextLine()));
+					int idVeiculo = (Integer.parseInt(teclado.nextLine()));
 					
-					VeiculoVO veiculo = controladoraVeiculo.consultarVeiculoController(veiculoVO); 
+					VeiculoVO veiculo = controladoraVeiculo.consultarVeiculoController(idVeiculo); 
 					if (veiculo == null) {
 						System.out.println("\nVeiculo não localizado.");
 					}
@@ -218,7 +225,7 @@ public class MenuVeiculo {
 			}
 			consultarVeiculo();
 			}
-		apresentarOpcoesMenuVeiculo();
+		apresentarMenuVeiculo();
 		}
 		
 

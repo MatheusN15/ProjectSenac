@@ -60,9 +60,9 @@ public class VeiculoBO {
 		return veiculoDAO.consultarTodosVeiculosDAO();
 	}
 
-	public VeiculoVO cunsultarVeiculoBO(VeiculoVO veiculoVO) {
+	public VeiculoVO cunsultarVeiculoBO(int idVeiculo) {
 		VeiculoDAO veiculoDAO = new VeiculoDAO();
-		return veiculoDAO.consultarVeiculoDAO(veiculoVO);
+		return veiculoDAO.consultarVeiculoDAO(idVeiculo);
 	}
 
 

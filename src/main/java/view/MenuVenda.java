@@ -56,7 +56,6 @@ public class MenuVenda {
 		}
 		
 		private void cadastrarvenda() {
-			// TODO Auto-generated method stub
 			
 		}
 		
