@@ -1,5 +1,8 @@
 package model.bo;
 
+import java.util.ArrayList;
+
+
 import model.dao.ClienteDAO;
 import model.vo.ClienteVO;
 
@@ -16,5 +19,16 @@ public class ClienteBO {
 		ClienteDAO clienteDAO = new ClienteDAO();
 		return clienteDAO.consultarCliente(clienteVO);
 		
+	}
+
+
+	public ArrayList<ClienteVO> cunsultarTodosClientesBO() {
+		ClienteDAO clientesDAO = new ClienteDAO();
+		return clientesDAO.consultarTodosClientes();
+	}
+
+	public String excluirClienteBO(ClienteVO clienteVO) {
+		ClienteDAO clientesDAO = new ClienteDAO();
+		return clientesDAO.excluirClienteDAO(clienteVO);
 	}
 }

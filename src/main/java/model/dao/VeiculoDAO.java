@@ -83,7 +83,7 @@ public class VeiculoDAO {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		int resultado = 0;
-		String query = "DELET FROM veiculo WHERE idveiculo = " + veiculoVO.getIdVeiculo() + ";";
+		String query = "DELETE FROM veiculo WHERE idveiculo = " + veiculoVO.getIdVeiculo() + ";";
 		try {
 			resultado = stmt.executeUpdate(query);
 			

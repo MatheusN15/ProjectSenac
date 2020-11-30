@@ -48,7 +48,8 @@ public class ClienteVO {
 
 
 	public void imprimir() {
-		System.out.printf("\n%3d   %-10s   %-10s   %-10s   %-5d   %-10s   %-10s \n",
+		System.out.printf("\n%3s   %-10s   %-15s   %-15s \n",
+				this.getIdCliente(),
 				this.getNome(),
 				this.getCpf(),
 				this.getTelefone());

@@ -1,5 +1,7 @@
 package view;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import controller.ControladoraCliente;
@@ -33,6 +35,7 @@ public class MenuCliente {
 				break;
 			}
 			case OPCAO_CLIENTE_EXCLUIR: {
+				excluirCliente();
 				break;
 			}
 			default:
@@ -45,32 +48,51 @@ public class MenuCliente {
 	}
 
 	private void consultarCliente() {
-		System.out.println("Escolha o tipo de consulta:");
+		System.out.println("\nEscolha o tipo de consulta:");
 		System.out.println("1 - Consultar um cliente: ");
 		System.out.println("2 - Consultar todos os clientes: ");
+		System.out.println("3 - Voltar ao menur anterior: ");
 		int opcao = Integer.parseInt(teclado.nextLine());
 		ClienteVO clienteVO = new ClienteVO();
-		if (opcao == 1) {
-			System.out.println("Informe o id: ");
-			clienteVO.setIdCliente(Integer.parseInt(teclado.nextLine()));			
-			ControladoraCliente contrCliente = new ControladoraCliente();
-			ClienteVO cliente = contrCliente.consultarCliente(clienteVO);
-			if (cliente == null) {
-				System.out.println("\nVeiculo não localizado.");
+		switch(opcao) {
+			case 1:{
+				System.out.println("Informe o id: ");
+				clienteVO.setIdCliente(Integer.parseInt(teclado.nextLine()));			
+				ControladoraCliente contrCliente = new ControladoraCliente();
+				ClienteVO cliente = contrCliente.consultarCliente(clienteVO);
+				if (cliente == null) {
+					System.out.println("\nCliente não localizado.");
+				}
+				System.out.println("\n------ RESULTADO DA CONSULTA ------");
+				System.out.println("");
+				cliente.imprimir();
+				break;
 			}
-			System.out.println("\n------ RESULTADO DA CONSULTA ------");
-			System.out.println("");
-			cliente.imprimir();
-		}else if (opcao == 2) {
-			
-		}else {
+			case 2:{
+				ControladoraCliente contrCliente = new ControladoraCliente();
+				ArrayList<ClienteVO> listaClientesVO = contrCliente.consultarTodosClientes();
+				if(listaClientesVO.isEmpty()) {
+					System.out.println("\nLista de Clientes não localizada.");
+				}
+				System.out.println("\n------ RESULTADO DA CONSULTA ------");
+				System.out.printf("\n%3s   %-10s   %-15s   %-15s \n",
+						"ID", "NOME", "CPF", "TELEFONE");
+				for (int i = 0; i < listaClientesVO.size(); i++) {
+					listaClientesVO.get(i).imprimir();
+				}
+				break;
+			}
+			case 3:{
+				apresentarMenuCliente();
+				break;
+			}
 			
 		}
-		
+		consultarCliente();
 	}
 
 	private int apresentarOpcoesMenuCliente() {
-		System.out.println("Revenda Ferro Velho");
+		System.out.println("\nRevenda Ferro Velho");
 		System.out.println("====Menu Cliente====");
 		System.out.println("\nOpções:");
 		System.out.println(OPCAO_CLIENTE_CADASTRAR + "- Cadastrar Cliente:");
@@ -95,5 +117,16 @@ public class MenuCliente {
 		ControladoraCliente contrCliente = new ControladoraCliente();
 		contrCliente.cadastrarCliente(clienteVO);
 		apresentarMenuCliente();
+	}
+	
+	private void excluirCliente() {
+		ClienteVO apClienteVO = new ClienteVO();
+		System.out.println("\nDigite o codigo do cliente: ");
+		apClienteVO.setIdCliente(Integer.parseInt(teclado.nextLine()));
+		
+		ControladoraCliente controladoraCliente = new ControladoraCliente();
+		String resultado = controladoraCliente.excluirCliente(apClienteVO);
+		System.out.println(resultado);
+		
 	}
 }

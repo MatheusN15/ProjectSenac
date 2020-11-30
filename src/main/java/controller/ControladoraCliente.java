@@ -1,7 +1,12 @@
 package controller;
 
+import java.util.ArrayList;
+
 import model.bo.ClienteBO;
+import model.bo.VeiculoBO;
 import model.vo.ClienteVO;
+import model.vo.VeiculoVO;
+
 
 public class ControladoraCliente {
 
@@ -17,4 +22,13 @@ public class ControladoraCliente {
 		
 	}
 
+	public ArrayList<ClienteVO> consultarTodosClientes() {
+		ClienteBO veiculoBO = new ClienteBO();
+		return veiculoBO.cunsultarTodosClientesBO();
+	}
+
+	public String excluirCliente(ClienteVO clienteVO) {
+		ClienteBO veiculoBO = new ClienteBO();
+		return veiculoBO.excluirClienteBO(clienteVO);
+	}
 }
