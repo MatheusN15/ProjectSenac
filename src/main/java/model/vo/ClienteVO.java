@@ -45,6 +45,15 @@ public class ClienteVO {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
+
+
+	public void imprimir() {
+		System.out.printf("\n%3d   %-10s   %-10s   %-10s   %-5d   %-10s   %-10s \n",
+				this.getNome(),
+				this.getCpf(),
+				this.getTelefone());
+		
+	}
 	
 	
 }

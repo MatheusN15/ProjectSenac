@@ -101,7 +101,28 @@ public class VeiculoDAO {
 	}
 
 	public int atualizarVeiculoDAO(VeiculoVO veiculoVO) {
-		return 1;
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		int resultado = 0;
+		String query = "UPDATE veiculo (modelo, tipo, fabricante, ano, cor, placa) VALUES ('" 
+		+ veiculoVO.getModelo() + "', '"
+		+ veiculoVO.getTipo() + "', '"
+		+ veiculoVO.getFabricante() + "', "
+		+ veiculoVO.getAno() + ", '"
+		+ veiculoVO.getCor() + "', '"
+		+ veiculoVO.getPlaca() + "')";
+		try {
+			resultado = stmt.executeUpdate(query);
+			
+		}catch (Exception e) {
+			System.out.println("Erro ao executar a query de cadastro do veiculo.");
+			e.printStackTrace();
+		}finally {
+			
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
+		return resultado;
 	}
 
 	public ArrayList<VeiculoVO> consultarTodosVeiculosDAO() {

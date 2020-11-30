@@ -2,6 +2,9 @@ package view;
 
 import java.util.Scanner;
 
+import controller.ControladoraCliente;
+import model.vo.ClienteVO;
+
 public class MenuCliente {
 
 	Scanner teclado = new Scanner(System.in);
@@ -19,9 +22,11 @@ public class MenuCliente {
 		while (opcao != OPCAO_CLIENTE_RETORNAR) {
 			switch (opcao) {
 			case OPCAO_CLIENTE_CADASTRAR: {
+				cadastrarCliente();
 				break;
 			}
 			case OPCAO_CLIENTE_CONSULTAR: {
+				consultarCliente();
 				break;
 			}
 			case OPCAO_CLIENTE_ATUALIZAR: {
@@ -39,6 +44,31 @@ public class MenuCliente {
 		
 	}
 
+	private void consultarCliente() {
+		System.out.println("Escolha o tipo de consulta:");
+		System.out.println("1 - Consultar um cliente: ");
+		System.out.println("2 - Consultar todos os clientes: ");
+		int opcao = Integer.parseInt(teclado.nextLine());
+		ClienteVO clienteVO = new ClienteVO();
+		if (opcao == 1) {
+			System.out.println("Informe o id: ");
+			clienteVO.setIdCliente(Integer.parseInt(teclado.nextLine()));			
+			ControladoraCliente contrCliente = new ControladoraCliente();
+			ClienteVO cliente = contrCliente.consultarCliente(clienteVO);
+			if (cliente == null) {
+				System.out.println("\nVeiculo não localizado.");
+			}
+			System.out.println("\n------ RESULTADO DA CONSULTA ------");
+			System.out.println("");
+			cliente.imprimir();
+		}else if (opcao == 2) {
+			
+		}else {
+			
+		}
+		
+	}
+
 	private int apresentarOpcoesMenuCliente() {
 		System.out.println("Revenda Ferro Velho");
 		System.out.println("====Menu Cliente====");
@@ -51,5 +81,19 @@ public class MenuCliente {
 		System.out.print("\nDigite a opção: ");
 		return Integer.parseInt(teclado.nextLine());
 		
+	}
+	
+	private void cadastrarCliente() {
+		ClienteVO clienteVO = new ClienteVO();
+		System.out.println("Digite o nome do cliente: ");
+		clienteVO.setNome(teclado.nextLine());
+		System.out.println("Digite o  cpf: ");
+		clienteVO.setCpf(teclado.nextLine());
+		System.out.println("Digite o telefone: ");
+		clienteVO.setTelefone(teclado.nextLine());
+		
+		ControladoraCliente contrCliente = new ControladoraCliente();
+		contrCliente.cadastrarCliente(clienteVO);
+		apresentarMenuCliente();
 	}
 }

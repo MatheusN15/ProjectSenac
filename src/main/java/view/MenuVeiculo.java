@@ -147,6 +147,8 @@ public class MenuVeiculo {
 	
 	private void atualizarVeiculo() {
 		VeiculoVO veiculoVO = new VeiculoVO();
+		System.out.println("Digite o codigo do veiculo que quer atualizar: ");
+		veiculoVO.setIdVeiculo(Integer.parseInt(teclado.nextLine()));
 		System.out.print("\nDigite o modelo do veiculo: ");
 		veiculoVO.setModelo(teclado.nextLine());
 		System.out.println("Digite o tipo do veiculo: ");
@@ -184,7 +186,7 @@ public class MenuVeiculo {
 		veiculoVO.setAno(Integer.parseInt(teclado.nextLine()));
 		
 		ControladoraVeiculo controladoraVeiculo = new ControladoraVeiculo();
-		String resultado = controladoraVeiculo.cadastrarVeiculoController(veiculoVO);
+		String resultado = controladoraVeiculo.atualizarVeiculoController(veiculoVO);
 		System.out.println(resultado);
 	}
 	
