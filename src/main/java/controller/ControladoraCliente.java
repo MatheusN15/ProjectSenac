@@ -28,7 +28,24 @@ public class ControladoraCliente {
 	}
 
 	public String excluirCliente(ClienteVO clienteVO) {
+		ClienteBO clienteBO = new ClienteBO();
+		return clienteBO.excluirClienteBO(clienteVO);
+	}
+
+	public String atualizarCliente(int idCliente, int escolha, String mudanca) {
 		ClienteBO veiculoBO = new ClienteBO();
-		return veiculoBO.excluirClienteBO(clienteVO);
+		String campo = "";
+		switch (escolha) {
+			case 1:
+				campo = "nome";
+				break;
+			case 2:
+				campo = "cpf";
+				break;
+			case 3:
+				campo = "telefone";
+				break;
+		}
+		return veiculoBO.atualizarClienteBO(idCliente, campo, mudanca);
 	}
 }

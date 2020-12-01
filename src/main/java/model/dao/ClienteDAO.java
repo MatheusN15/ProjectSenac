@@ -108,4 +108,23 @@ public class ClienteDAO {
 		return "Sucesso!";
 	}
 
+	public String atualizarClienteDAO(int idCliente, String escolha, String mudanca) {
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		int resultado = 0;
+		String query = "UPDATE cliente SET " + escolha + " = '" + mudanca  + "' WHERE idCliente = " + idCliente + ";";
+		try {
+			resultado = stmt.executeUpdate(query);
+			
+		}catch (Exception e) {
+			System.out.println("Erro ao executar a query de atualizar cliente.");
+			e.printStackTrace();
+		}finally {
+			
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
+		return "Foi né?";
+	}
+
 }

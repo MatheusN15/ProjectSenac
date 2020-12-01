@@ -32,6 +32,8 @@ public class MenuCliente {
 				break;
 			}
 			case OPCAO_CLIENTE_ATUALIZAR: {
+				atualizarCliente();
+				
 				break;
 			}
 			case OPCAO_CLIENTE_EXCLUIR: {
@@ -44,6 +46,22 @@ public class MenuCliente {
 			}
 		opcao = this.apresentarOpcoesMenuCliente();	
 		}
+		
+	}
+
+	private void atualizarCliente() {
+		System.out.println("\nQual o ID do cliente voce quer atualizar? ");
+		int idCliente = Integer.parseInt(teclado.nextLine());
+		System.out.println("\nOque voce deseja alterar?");
+		System.out.println("1 - Nome");
+		System.out.println("2 - Cpf");
+		System.out.println("3 - Telefone");
+		int escolha = Integer.parseInt(teclado.nextLine());
+		System.out.println("Digite o novo parametro: ");
+		String mudanca = teclado.nextLine();
+		ControladoraCliente contrCliente = new ControladoraCliente();
+		String resultado =  contrCliente.atualizarCliente(idCliente, escolha, mudanca);
+		System.out.println(resultado);
 		
 	}
 

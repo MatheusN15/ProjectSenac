@@ -31,4 +31,9 @@ public class ClienteBO {
 		ClienteDAO clientesDAO = new ClienteDAO();
 		return clientesDAO.excluirClienteDAO(clienteVO);
 	}
+
+	public String atualizarClienteBO(int idCliente, String escolha, String mudanca) {
+		ClienteDAO clientesDAO = new ClienteDAO();
+		return clientesDAO.atualizarClienteDAO(idCliente, escolha, mudanca);
+	}
 }
