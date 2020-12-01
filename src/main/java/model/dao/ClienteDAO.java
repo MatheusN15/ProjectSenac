@@ -6,8 +6,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.vo.ClienteVO;
-import model.vo.TipoVeiculo;
-import model.vo.VeiculoVO;
 
 public class ClienteDAO {
 
@@ -90,6 +88,7 @@ public class ClienteDAO {
 	public String excluirClienteDAO(ClienteVO clienteVO) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
+		@SuppressWarnings("unused")
 		int resultado = 0;
 		String query = "DELETE FROM cliente WHERE idCliente = " + clienteVO.getIdCliente() + ";";
 		try {
@@ -111,6 +110,7 @@ public class ClienteDAO {
 	public String atualizarClienteDAO(int idCliente, String escolha, String mudanca) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
+		@SuppressWarnings("unused")
 		int resultado = 0;
 		String query = "UPDATE cliente SET " + escolha + " = '" + mudanca  + "' WHERE idCliente = " + idCliente + ";";
 		try {

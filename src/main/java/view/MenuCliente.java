@@ -40,6 +40,11 @@ public class MenuCliente {
 				excluirCliente();
 				break;
 			}
+			case OPCAO_CLIENTE_RETORNAR: {
+				Menu menu = new Menu();
+				menu.apresentarMenu();
+				break;
+			}
 			default:
 				System.out.println("Opcão invalida");
 				break;

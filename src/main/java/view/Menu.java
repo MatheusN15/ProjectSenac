@@ -41,7 +41,8 @@ public class Menu {
 	}
 
 	private int apresentarOpcoesMenu() {
-		System.out.println("Revenda Ferro Velho");
+		System.out.println("");
+		System.out.println("\n======= Revenda Ferro Velho =======");
 		System.out.println("\nOpções:");
 		System.out.println(OPCAO_MENU_CLIENTE + "- Menu Cliente:");
 		System.out.println(OPCAO_MENU_VEICULO + "- Menu Veiculo:");

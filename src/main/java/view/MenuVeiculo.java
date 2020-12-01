@@ -55,6 +55,11 @@ public class MenuVeiculo {
 				this.excluirVeiculo();
 				break;
 			}
+			case OPCAO_VEICULO_VOLTAR: {
+				Menu menu = new Menu();
+				menu.apresentarMenu();
+				break;
+			}
 			default:
 				System.out.println("Opcão invalida");
 				break;
@@ -63,21 +68,6 @@ public class MenuVeiculo {
 		
 	}
 
-
-
-/*	private int apresentarOpcoesMenuVeiculo() {
-		System.out.println("Revenda Ferro Velho");
-		System.out.println("====Menu VEICULO====");
-		System.out.println("\nOpções:");
-		System.out.println(OPCAO_VEICULO_CADASTRAR + "- Cadastrar VEICULO:");
-		System.out.println(OPCAO_VEICULO_CONSULTAR + "- Consultar VEICULO:");
-		System.out.println(OPCAO_VEICULO_ATUALIZAR + "- Atualizar VEICULO:");
-		System.out.println(OPCAO_VEICULO_EXCLUIR + "- Excliur VEICULO:");
-		System.out.println(OPCAO_VEICULO_VOLTAR + "- Retornar ao Menu:");
-		System.out.print("\nDigite a opção: ");
-		return Integer.parseInt(teclado.nextLine());
-		
-	}*/
 	
 	private void cadastrarVeiculo() {
 		VeiculoVO veiculoVO = new VeiculoVO();
