@@ -1,6 +1,15 @@
 package view;
 
+import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
+
+import controller.ControladoraVeiculo;
+import controller.ControladoraVenda;
+import model.vo.TipoVeiculo;
+import model.vo.VeiculoVO;
+import model.vo.VendaVO;
 
 public class MenuVenda {
 	
@@ -42,7 +51,7 @@ public class MenuVenda {
 		}
 
 		private int apresentarOpcoesMenuVenda() {
-			System.out.println("Revenda Ferro Velho");
+			System.out.println("\nRevenda Ferro Velho");
 			System.out.println("====Menu venda====");
 			System.out.println("\nOpções:");
 			System.out.println(OPCAO_VENDA_CADASTRAR + "- Cadastrar venda:");
@@ -56,7 +65,22 @@ public class MenuVenda {
 		}
 		
 		private void cadastrarvenda() {
-			
+			VendaVO venda = new VendaVO();
+			System.out.println("\nRevenda Ferro Velho");
+			System.out.println("==== Realizar Venda ====");
+			System.out.println("\nDigite o ID do cliente: ");
+			venda.setIdCliente(Integer.parseInt(teclado.nextLine()));
+			System.out.println("\nDigite o ID do veiculo: ");
+			venda.setIdVeiculo(Integer.parseInt(teclado.nextLine()));
+			System.out.println("\nDigite o valor da compra: ");
+			venda.setValorVenda(Double.parseDouble(teclado.nextLine()));
+			LocalDate dataVenda = LocalDate.now();
+			venda.setDataVenda(dataVenda);
+			System.out.println(venda.getDataVenda());
+			ControladoraVenda controladoraVenda = new ControladoraVenda();
+			String resultado = controladoraVenda.cadastrarVendaController(venda);
+			System.out.println(resultado);
+			apresentarMenuVenda();
 		}
 		
 	

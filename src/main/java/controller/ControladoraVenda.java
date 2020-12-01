@@ -4,13 +4,15 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
+import model.bo.VendaBO;
 import model.vo.VendaVO;
 
 public class ControladoraVenda {
 	DateTimeFormatter dataFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
-	public String cadastrarVendaController(VendaVO vendaVo) {
-		return "Ok";
+	public String cadastrarVendaController(VendaVO vendaVO) {
+		VendaBO vendaBO = new VendaBO();
+		return vendaBO.cadastrarVendaBO(vendaVO);
 		
 	}
 	public String excluirrVendaController(VendaVO vendaVo) {
