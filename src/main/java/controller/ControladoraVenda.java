@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import model.bo.VendaBO;
+import model.bo.VendaBO;
 import model.vo.VendaVO;
 
 public class ControladoraVenda {
@@ -39,6 +40,14 @@ public class ControladoraVenda {
 		VendaVO venda = new VendaVO(1,1,2,200.00,LocalDate.parse("22/10/2020", dataFormatter));
 		return venda;
 		
+	}
+	public ArrayList<VendaVO> consultarTodosVendas() {
+		VendaBO vendaBO = new VendaBO();
+		return vendaBO.cunsultarTodosVendasBO();
+	}
+	public VendaVO consultarVenda(int idvenda) {
+		VendaBO vendaBO = new VendaBO();
+		return vendaBO.cunsultarVendaBO(idvenda);
 	}
 	
 	

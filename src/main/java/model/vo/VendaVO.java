@@ -54,6 +54,16 @@ public class VendaVO {
 	public void setDataVenda(LocalDate dataVenda) {
 		this.dataVenda = dataVenda;
 	}
+
+	public void imprimir() {
+		System.out.printf("\n%3s   %3s   %3s   %-10s   %-10s \n",
+				this.getIdVenda(),
+				this.getIdCliente(),
+				this.getIdVeiculo(),
+				this.getValorVenda(),
+				this.getDataVenda());
+		
+	}
 	
 	
 	
