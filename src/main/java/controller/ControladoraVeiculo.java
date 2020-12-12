@@ -3,7 +3,6 @@ package controller;
 import java.util.ArrayList;
 
 import model.bo.VeiculoBO;
-import model.vo.TipoVeiculo;
 import model.vo.VeiculoVO;
 
 public class ControladoraVeiculo {

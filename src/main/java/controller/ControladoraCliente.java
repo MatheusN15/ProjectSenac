@@ -1,18 +1,21 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import model.bo.ClienteBO;
-import model.bo.VeiculoBO;
 import model.vo.ClienteVO;
-import model.vo.VeiculoVO;
 
 
 public class ControladoraCliente {
-
+	Scanner teclado = new Scanner(System.in);
 
 	public void cadastrarCliente(ClienteVO clienteVO) {
 		ClienteBO clienteBO = new ClienteBO();
+		if (clienteVO.getCpf().length() > 11) {
+			System.out.println("Cpf deve contem 11 digitos ou menos");
+			clienteVO.setCpf(teclado.nextLine());
+		}
 		clienteBO.cadastrarVeiculoBO(clienteVO);
 	}
 
