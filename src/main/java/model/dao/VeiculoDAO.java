@@ -110,7 +110,7 @@ public class VeiculoDAO {
 		+ veiculoVO.getFabricante() + "', "
 		+ veiculoVO.getAno() + ", '"
 		+ veiculoVO.getCor() + "', '"
-		+ veiculoVO.getPlaca() + "')";
+		+ veiculoVO.getPlaca() + "') WHERE idVeiulo = " + veiculoVO.getIdVeiculo() + ";";
 		try {
 			resultado = stmt.executeUpdate(query);
 			

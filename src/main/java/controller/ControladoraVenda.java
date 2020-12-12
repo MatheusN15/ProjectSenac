@@ -25,22 +25,6 @@ public class ControladoraVenda {
 		
 	}
 	
-	public ArrayList<VendaVO> consultarTodasVendasController() {
-		ArrayList<VendaVO> lista = new ArrayList<VendaVO>();
-		VendaVO venda1 = new VendaVO(1,1,2,200.00,LocalDate.parse("22/10/2020", dataFormatter));
-		VendaVO venda2 = new VendaVO(1,1,2,200.00,LocalDate.parse("22/10/2020", dataFormatter));
-		VendaVO venda3 = new VendaVO(1,1,2,200.00,LocalDate.parse("22/10/2020", dataFormatter));
-		lista.add(venda1);
-		lista.add(venda2);
-		lista.add(venda3);
-		return lista;	
-	}
-	
-	public VendaVO consultarVendaController(VendaVO vendaVo) {
-		VendaVO venda = new VendaVO(1,1,2,200.00,LocalDate.parse("22/10/2020", dataFormatter));
-		return venda;
-		
-	}
 	public ArrayList<VendaVO> consultarTodosVendas() {
 		VendaBO vendaBO = new VendaBO();
 		return vendaBO.cunsultarTodosVendasBO();
@@ -52,6 +36,18 @@ public class ControladoraVenda {
 	public String excluirVenda(VendaVO venda) {
 		VendaBO vendaBO = new VendaBO();
 		return vendaBO.excluirVendaBO(venda);
+	}
+	public String atualizarVenda(int idVenda, int escolha, String mudanca) {
+		VendaBO vendaBO = new VendaBO();
+		String campo = null;
+		if (escolha == 1) {
+			campo = "VALORVENDA";
+		} else if (escolha == 2) {
+			campo = "IDCLIENTE";
+		} else{
+			campo = "IDVEICULO";
+		}
+		return vendaBO.atualizarVendaBO(idVenda, campo, mudanca);
 	}
 	
 	

@@ -109,4 +109,26 @@ public class VendaDAO {
 		return result;
 
 }
+
+	public String atualizarVendaDAO(int idVenda, String campo, String mudanca) {
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		int resultado = 0;
+		String query = "UPDATE venda SET " + campo + " = " + mudanca + " WHERE idVenda = " + idVenda + ";";
+		
+		try {
+			resultado = stmt.executeUpdate(query);
+			
+		}catch (Exception e) {
+			System.out.println("Erro ao executar a query de cadastro do veiculo.");
+			e.printStackTrace();
+		}finally {
+			
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
+		String result = "" + resultado;
+		return result;
+		
+	}
 }

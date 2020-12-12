@@ -27,4 +27,9 @@ public class VendaBO {
 		return vendaDAO.excluirVendaDAO(venda);
 	}
 
+	public String atualizarVendaBO(int idVenda, String campo, String mudanca) {
+		VendaDAO vendaDAO = new VendaDAO();
+		return vendaDAO.atualizarVendaDAO(idVenda, campo, mudanca);
+	}
+
 }

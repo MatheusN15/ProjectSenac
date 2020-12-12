@@ -35,7 +35,7 @@ public class MenuVenda {
 					break;
 				}
 				case OPCAO_VENDA_ATUALIZAR: {
-	//				atualizarVenda();
+					atualizarVenda();
 					break;
 				}
 				case OPCAO_VENDA_EXCLUIR: {
@@ -64,21 +64,21 @@ public class MenuVenda {
 			
 		}
 
-//		private void atualizarVenda() {
-//			System.out.println("\nQual o ID da venda que voce deseja atualizar? ");
-//			int idVenda = Integer.parseInt(teclado.nextLine());
-//			System.out.println("\nOque voce deseja alterar?");
-//			System.out.println("1 - Nome");
-//			System.out.println("2 - Cpf");
-//			System.out.println("3 - Telefone");
-//			int escolha = Integer.parseInt(teclado.nextLine());
-//			System.out.println("Digite o novo parametro: ");
-//			String mudanca = teclado.nextLine();
-//			ControladoraVenda contrVenda = new ControladoraVenda();
-//			String resultado =  contrVenda.atualizarVenda(idVenda, escolha, mudanca);
-//			System.out.println(resultado);
-//			
-//		}
+		private void atualizarVenda() {
+			System.out.println("\nQual o ID da venda que voce deseja atualizar? ");
+			int idVenda = Integer.parseInt(teclado.nextLine());
+			System.out.println("\nOque voce deseja alterar?");
+			System.out.println("1 - Valor da venda");
+			System.out.println("2 - ID do cliente");
+			System.out.println("3 - ID do veiculo");
+			int escolha = Integer.parseInt(teclado.nextLine());
+			System.out.println("Digite o novo parametro: ");
+			String mudanca = teclado.nextLine();
+			ControladoraVenda contrVenda = new ControladoraVenda();
+			String resultado =  contrVenda.atualizarVenda(idVenda, escolha, mudanca);
+			System.out.println(resultado);
+			
+		}
 
 		private int apresentarOpcoesMenuVenda() {
 			System.out.println("\nRevenda Ferro Velho");
