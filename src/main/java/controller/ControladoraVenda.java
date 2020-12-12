@@ -49,6 +49,10 @@ public class ControladoraVenda {
 		VendaBO vendaBO = new VendaBO();
 		return vendaBO.cunsultarVendaBO(idvenda);
 	}
+	public String excluirVenda(VendaVO venda) {
+		VendaBO vendaBO = new VendaBO();
+		return vendaBO.excluirVendaBO(venda);
+	}
 	
 	
 }

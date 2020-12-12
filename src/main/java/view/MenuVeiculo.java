@@ -65,7 +65,8 @@ public class MenuVeiculo {
 				break;
 			}
 		}
-		
+		Menu menu = new Menu();
+		menu.apresentarMenu();
 	}
 
 	

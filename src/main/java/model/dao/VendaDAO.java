@@ -88,4 +88,25 @@ public class VendaDAO {
 		return venda;
 	}
 
+	public String excluirVendaDAO(VendaVO venda) {
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		int resultado = 0;
+		String query = "DELETE FROM venda WHERE idVenda = " + venda.getIdVenda() + ";";
+		
+		try {
+			resultado = stmt.executeUpdate(query);
+		}catch (Exception e) {
+			System.out.println("Erro ao executar a query de excluir venda.");
+			e.printStackTrace();
+		}finally {
+			
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		
+	}
+		String result = "" + resultado;
+		return result;
+
+}
 }

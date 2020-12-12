@@ -22,4 +22,9 @@ public class VendaBO {
 		return vendaDAO.consultarVendaDAO(idvenda);
 	}
 
+	public String excluirVendaBO(VendaVO venda) {
+		VendaDAO vendaDAO = new VendaDAO();
+		return vendaDAO.excluirVendaDAO(venda);
+	}
+
 }

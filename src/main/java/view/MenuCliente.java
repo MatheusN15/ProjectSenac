@@ -1,7 +1,6 @@
 package view;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import controller.ControladoraCliente;
@@ -19,7 +18,16 @@ public class MenuCliente {
 	private static final int OPCAO_CLIENTE_RETORNAR = 5;
 	
 	public void apresentarMenuCliente() {
-		int opcao = this.apresentarOpcoesMenuCliente();
+		System.out.println("\nRevenda Ferro Velho");
+		System.out.println("====Menu Cliente====");
+		System.out.println("\nOpções:");
+		System.out.println(OPCAO_CLIENTE_CADASTRAR + "- Cadastrar Cliente:");
+		System.out.println(OPCAO_CLIENTE_CONSULTAR + "- Consultar Cliente:");
+		System.out.println(OPCAO_CLIENTE_ATUALIZAR + "- Atualizar Cliente:");
+		System.out.println(OPCAO_CLIENTE_EXCLUIR + "- Excliur Cliente:");
+		System.out.println(OPCAO_CLIENTE_RETORNAR + "- Retornar ao Menu:");
+		System.out.print("\nDigite a opção: ");
+		int opcao= Integer.parseInt(teclado.nextLine());
 		
 		while (opcao != OPCAO_CLIENTE_RETORNAR) {
 			switch (opcao) {
@@ -40,18 +48,15 @@ public class MenuCliente {
 				excluirCliente();
 				break;
 			}
-			case OPCAO_CLIENTE_RETORNAR: {
-				Menu menu = new Menu();
-				menu.apresentarMenu();
-				break;
-			}
+			
 			default:
 				System.out.println("Opcão invalida");
 				break;
 			}
-		opcao = this.apresentarOpcoesMenuCliente();	
+
 		}
-		
+		Menu menu = new Menu();
+		menu.apresentarMenu();
 	}
 
 	private void atualizarCliente() {
@@ -112,20 +117,6 @@ public class MenuCliente {
 			
 		}
 		consultarCliente();
-	}
-
-	private int apresentarOpcoesMenuCliente() {
-		System.out.println("\nRevenda Ferro Velho");
-		System.out.println("====Menu Cliente====");
-		System.out.println("\nOpções:");
-		System.out.println(OPCAO_CLIENTE_CADASTRAR + "- Cadastrar Cliente:");
-		System.out.println(OPCAO_CLIENTE_CONSULTAR + "- Consultar Cliente:");
-		System.out.println(OPCAO_CLIENTE_ATUALIZAR + "- Atualizar Cliente:");
-		System.out.println(OPCAO_CLIENTE_EXCLUIR + "- Excliur Cliente:");
-		System.out.println(OPCAO_CLIENTE_RETORNAR + "- Retornar ao Menu:");
-		System.out.print("\nDigite a opção: ");
-		return Integer.parseInt(teclado.nextLine());
-		
 	}
 	
 	private void cadastrarCliente() {

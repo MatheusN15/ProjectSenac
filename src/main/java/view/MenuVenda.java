@@ -2,13 +2,9 @@ package view;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 import controller.ControladoraVenda;
-import controller.ControladoraVenda;
-import model.vo.VendaVO;
 import model.vo.VendaVO;
 
 public class MenuVenda {
@@ -32,17 +28,18 @@ public class MenuVenda {
 			while (opcao != OPCAO_VENDA_VOLTAR) {
 				switch (opcao) {
 				case OPCAO_VENDA_CADASTRAR: {
-					cadastrarvenda();
+					cadastrarVenda();
 				}
 				case OPCAO_VENDA_CONSULTAR: {
 					consultarVenda();
 					break;
 				}
 				case OPCAO_VENDA_ATUALIZAR: {
+	//				atualizarVenda();
 					break;
 				}
 				case OPCAO_VENDA_EXCLUIR: {
-					
+					excliurVenda();
 					break;
 				}
 				default:
@@ -51,8 +48,37 @@ public class MenuVenda {
 				}
 			opcao = this.apresentarOpcoesMenuVenda();	
 			}
+			Menu menu = new Menu();
+			menu.apresentarMenu();
+		}
+
+		private void excliurVenda() {
+			VendaVO venda = new VendaVO();
+			System.out.println("\nDigite o codigo da venda que deseja excluir: ");
+			venda.setIdVenda(Integer.parseInt(teclado.nextLine()));
+			
+			ControladoraVenda controladoraVenda = new ControladoraVenda();
+			String resultado = controladoraVenda.excluirVenda(venda);
+			System.out.println(resultado);
+			
 			
 		}
+
+//		private void atualizarVenda() {
+//			System.out.println("\nQual o ID da venda que voce deseja atualizar? ");
+//			int idVenda = Integer.parseInt(teclado.nextLine());
+//			System.out.println("\nOque voce deseja alterar?");
+//			System.out.println("1 - Nome");
+//			System.out.println("2 - Cpf");
+//			System.out.println("3 - Telefone");
+//			int escolha = Integer.parseInt(teclado.nextLine());
+//			System.out.println("Digite o novo parametro: ");
+//			String mudanca = teclado.nextLine();
+//			ControladoraVenda contrVenda = new ControladoraVenda();
+//			String resultado =  contrVenda.atualizarVenda(idVenda, escolha, mudanca);
+//			System.out.println(resultado);
+//			
+//		}
 
 		private int apresentarOpcoesMenuVenda() {
 			System.out.println("\nRevenda Ferro Velho");
@@ -68,7 +94,7 @@ public class MenuVenda {
 			
 		}
 		
-		private void cadastrarvenda() {
+		private void cadastrarVenda() {
 			VendaVO venda = new VendaVO();
 			System.out.println("\nRevenda Ferro Velho");
 			System.out.println("==== Realizar Venda ====");
